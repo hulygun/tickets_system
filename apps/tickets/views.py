@@ -1,6 +1,6 @@
 from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, authentication, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -15,6 +15,7 @@ class TicketViewSet(mixins.CreateModelMixin,
                    mixins.ListModelMixin,
                    viewsets.GenericViewSet):
     """Докстринг для эндпоинта тикетов"""
+
     serializer_class = TicketSerializer
     queryset = Ticket.objects.all()
 
@@ -37,6 +38,7 @@ class TicketViewSet(mixins.CreateModelMixin,
 
 class UserStatisticViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """Докстринг статистики тикетов по пользователям"""
+
     filter_backends = (DjangoFilterBackend,)
     filterset_class = UserStatisticFilterSet
     queryset = Ticket.objects.all()
