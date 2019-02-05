@@ -27,7 +27,7 @@ class TicketViewSet(mixins.CreateModelMixin,
         ticket = self.get_object()
         serializer = self.get_serializer(ticket, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
-        ticket.change_state(serializer.data.get('state'))
+        ticket.change_state(request.data.get('state'), request.user)
 
         return Response(self.get_serializer(ticket).data)
 

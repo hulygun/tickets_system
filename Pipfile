@@ -10,6 +10,7 @@ django = "*"
 django-fsm = "*"
 djangorestframework = "*"
 coreapi = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.7"
