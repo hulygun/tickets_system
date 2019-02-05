@@ -9,7 +9,7 @@ class TicketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ticket
-        fields = ('title', 'description', 'author', 'state')
+        fields = ('id', 'title', 'description', 'author', 'state')
 
     def get_state(self, instance):
         return instance.state

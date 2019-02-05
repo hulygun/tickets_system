@@ -37,7 +37,7 @@ class Ticket(models.Model):
         """Назначаем пользователя с наименьшем количеством тикетов"""
         users = get_user_model().objects.prefetch_related(
             Prefetch(self.ASSIGNED_TICKETS_NAME, self.__class__.objects.filter(state__in=('assigned', 'processed')))
-        )
+        ).exclude(pk=self.author_id)
         self.performer_id = sorted(
             [(user.id, user.assigned_tickets.count()) for user in users],
             key=lambda item: item[1]

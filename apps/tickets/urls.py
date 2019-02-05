@@ -9,5 +9,4 @@ router.register('statistic', UserStatisticViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('statistic/', UserStatisticViewSet)
 ]
